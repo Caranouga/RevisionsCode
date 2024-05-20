@@ -75,7 +75,7 @@ foreach ($files as $file):
     $errors['conducteur'] += $data['conducteur']['erreurs'] / $data['conducteur']['total'];
 endforeach;
 
-asort($errors);
+arsort($errors);
 
 for($i = 0; $i < 3; $i++):
     $key = key($errors);
