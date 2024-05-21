@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -11,45 +10,33 @@
         <link href="../assets/css/main.css" rel="stylesheet">
     </head>
     <body>
-        <!-- <nav class="navbar navbar-default">
-            <div class="container-fluid">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
+                    <a href="../" class="navbar-brand">Révisions Code</a>
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Brand</a>
                 </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="navbar-collapse collapse" id="navbar-main">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Link</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
+                        <li>
+                            <a href="add.php">Entrer mes données</a>
                         </li>
-                    </ul>
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Link</a></li>
+                        <li>
+                            <a href="list.php">Voir mes données</a>
+                        </li>
+                        <li>
+                            <a href="https://passetoncode.fr" target="_blank">M'entrainer</a>
+                        </li>
                     </ul>
                 </div>
             </div>
-        </nav> -->
+        </div>
 
-        <main role="main" class="container">
+        <div class="container">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-lg-8 col-md-7 col-sm-6">
