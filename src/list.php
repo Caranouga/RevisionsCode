@@ -51,35 +51,59 @@ require __DIR__ . '/includes/header.php';
 <?php
 
 $errors = [
-    'signalisation' => 0,
-    'stationnement' => 0,
-    'feux' => 0,
-    'vehicule' => 0,
-    'depassement' => 0,
-    'orientation' => 0,
-    'priorites' => 0,
-    'conducteur' => 0
+    'signalisation' => [
+        'donnees' => 0,
+        'titre' => 'Signalisation'
+    ],
+    'stationnement' => [
+        'donnees' => 0,
+        'titre' => 'Arrêt/Stationnement'
+    ],
+    'feux' => [
+        'donnees' => 0,
+        'titre' => 'Feux/Intempéries'
+    ],
+    'vehicule' => [
+        'donnees' => 0,
+        'titre' => 'Véhicule'
+    ],
+    'depassement' => [
+        'donnees' => 0,
+        'titre' => 'Dépassement'
+    ],
+    'orientation' => [
+        'donnees' => 0,
+        'titre' => 'Orientation'
+    ],
+    'priorites' => [
+        'donnees' => 0,
+        'titre' => 'Priorités'
+    ],
+    'conducteur' => [
+        'donnees' => 0,
+        'titre' => 'Conducteur'
+    ]
 ];
 
 foreach ($files as $file):
     $content = file_get_contents($file);
     $data = json_decode($content, true);
-    
-    $errors['signalisation'] += $data['signalisation']['erreurs'] / $data['signalisation']['total'];
-    $errors['stationnement'] += $data['stationnement']['erreurs'] / $data['stationnement']['total'];
-    $errors['feux'] += $data['feux']['erreurs'] / $data['feux']['total'];
-    $errors['vehicule'] += $data['vehicule']['erreurs'] / $data['vehicule']['total'];
-    $errors['depassement'] += $data['depassement']['erreurs'] / $data['depassement']['total'];
-    $errors['orientation'] += $data['orientation']['erreurs'] / $data['orientation']['total'];
-    $errors['priorites'] += $data['priorites']['erreurs'] / $data['priorites']['total'];
-    $errors['conducteur'] += $data['conducteur']['erreurs'] / $data['conducteur']['total'];
+
+    $errors['signalisation']['donnees'] += $data['signalisation']['erreurs'] / $data['signalisation']['total'];
+    $errors['stationnement']['donnees'] += $data['stationnement']['erreurs'] / $data['stationnement']['total'];
+    $errors['feux']['donnees'] += $data['feux']['erreurs'] / $data['feux']['total'];
+    $errors['vehicule']['donnees'] += $data['vehicule']['erreurs'] / $data['vehicule']['total'];
+    $errors['depassement']['donnees'] += $data['depassement']['erreurs'] / $data['depassement']['total'];
+    $errors['orientation']['donnees'] += $data['orientation']['erreurs'] / $data['orientation']['total'];
+    $errors['priorites']['donnees'] += $data['priorites']['erreurs'] / $data['priorites']['total'];
+    $errors['conducteur']['donnees'] += $data['conducteur']['erreurs'] / $data['conducteur']['total'];
 endforeach;
 
 arsort($errors);
 
 for($i = 0; $i < 3; $i++):
     $key = key($errors);
-    echo '<li>' . $i + 1 . ($i == 0 ? 'er' : 'ème') . ': ' . ucfirst($key) . '</li>';
+    echo '<li>' . $errors[$key]['titre'] . ' (' . number_format($errors[$key]['donnees'] / count($files) * 100, 2, '.', '') . '% d\'erreurs)</li>';
     next($errors);
 endfor;
 ?>
