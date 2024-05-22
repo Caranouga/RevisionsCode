@@ -6,6 +6,12 @@ if(session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+function pre($var) {
+    echo '<pre>';
+    print_r($var);
+    echo '</pre>';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -49,4 +55,3 @@ if(session_status() === PHP_SESSION_NONE) {
         <div class="container">
             <div class="page-header">
                 <div class="row">
-                    <div class="col-lg-8 col-md-7 col-sm-6">
