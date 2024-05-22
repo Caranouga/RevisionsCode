@@ -1,3 +1,13 @@
+<?php
+
+require_once __DIR__ . '/bdd.php';
+
+if(session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -22,15 +32,15 @@
                 </div>
                 <div class="navbar-collapse collapse" id="navbar-main">
                     <ul class="nav navbar-nav">
-                        <li>
-                            <a href="add.php">Entrer mes données</a>
-                        </li>
-                        <li>
-                            <a href="list.php">Voir mes données</a>
-                        </li>
-                        <li>
-                            <a href="https://passetoncode.fr" target="_blank">M'entrainer</a>
-                        </li>
+                        <?php if(isset($_SESSION['auth'])) : ?>
+                            <li><a href="add.php">Entrer mes données</a></li>
+                            <li><a href="list.php">Voir mes données</a></li>
+                            <li><a href="logout.php">Se déconnecter</a></li>
+                        <?php else: ?>
+                            <li><a href="login.php">Se connecter</a></li>
+                            <li><a href="register.php">S'inscrire</a></li>
+                        <?php endif; ?>
+                        <li><a href="https://passetoncode.fr" target="_blank">M'entrainer</a></li>
                     </ul>
                 </div>
             </div>

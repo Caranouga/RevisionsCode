@@ -1,5 +1,12 @@
 <?php
+
 require __DIR__ . '/includes/header.php';
+
+if(!isset($_SESSION['auth'])) {
+    header('Location: login.php');
+    exit();
+}
+
 ?>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

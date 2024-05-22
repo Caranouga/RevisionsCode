@@ -1,5 +1,11 @@
 <?php
+
 require __DIR__ . '/includes/header.php';
+
+if(!isset($_SESSION['auth'])) {
+    header('Location: login.php');
+    exit();
+}
 
 // TODO: Ajouter les vérifs
 if(!empty($_POST)){
@@ -44,6 +50,7 @@ if(!empty($_POST)){
 
     file_put_contents($filename, json_encode($data));
 }
+
 ?>
 
 <h1>Entrer mes données</h1>
