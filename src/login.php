@@ -10,7 +10,7 @@ if(isset($_SESSION['auth'])) {
 if(!empty($_POST)){
     $errors = [];
 
-    if(empty($_POST['pseudo']) || empty($_POST['password'])){
+    if(!isset($_POST['pseudo']) || !isset($_POST['password'])){
         $errors['pseudo'] = "Vous devez rentrer un pseudo et un mot de passe";
     } else {
         $req = $pdo->prepare('SELECT * FROM users WHERE pseudo = ?');

@@ -10,75 +10,75 @@ if(!isset($_SESSION['auth'])) {
 if(!empty($_POST)){
     $errors = [];
 
-    if(empty($_POST['date'])){
+    if(!isset($_POST['date'])){
         $errors['date'] = 'Vous devez rentrer une date';
     }
 
-    if(empty($_POST['time'])){
+    if(!isset($_POST['time'])){
         $errors['time'] = 'Vous devez rentrer une heure';
     }
 
-    if(empty($_POST['signalisation'])){
+    if(!isset($_POST['signalisation'])){
         $errors['signalisation'] = 'Vous devez rentrer un nombre';
     }
 
-    if(empty($_POST['signalisation_e'])){
+    if(!isset($_POST['signalisation_e'])){
         $errors['signalisation_e'] = 'Vous devez rentrer un nombre';
     }
 
-    if(empty($_POST['stationnement'])){
+    if(!isset($_POST['stationnement'])){
         $errors['stationnement'] = 'Vous devez rentrer un nombre';
     }
 
-    if(empty($_POST['stationnement_e'])){
+    if(!isset($_POST['stationnement_e'])){
         $errors['stationnement_e'] = 'Vous devez rentrer un nombre';
     }
 
-    if(empty($_POST['feux'])){
+    if(!isset($_POST['feux'])){
         $errors['feux'] = 'Vous devez rentrer un nombre';
     }
 
-    if(empty($_POST['feux_e'])){
+    if(!isset($_POST['feux_e'])){
         $errors['feux_e'] = 'Vous devez rentrer un nombre';
     }
 
-    if(empty($_POST['vehicule'])){
+    if(!isset($_POST['vehicule'])){
         $errors['vehicule'] = 'Vous devez rentrer un nombre';
     }
 
-    if(empty($_POST['vehicule_e'])){
+    if(!isset($_POST['vehicule_e'])){
         $errors['vehicule_e'] = 'Vous devez rentrer un nombre';
     }
 
-    if(empty($_POST['depassement'])){
+    if(!isset($_POST['depassement'])){
         $errors['depassement'] = 'Vous devez rentrer un nombre';
     }
 
-    if(empty($_POST['depassement_e'])){
+    if(!isset($_POST['depassement_e'])){
         $errors['depassement_e'] = 'Vous devez rentrer un nombre';
     }
 
-    if(empty($_POST['orientation'])){
+    if(!isset($_POST['orientation'])){
         $errors['orientation'] = 'Vous devez rentrer un nombre';
     }
 
-    if(empty($_POST['orientation_e'])){
+    if(!isset($_POST['orientation_e'])){
         $errors['orientation_e'] = 'Vous devez rentrer un nombre';
     }
 
-    if(empty($_POST['priorites'])){
+    if(!isset($_POST['priorites'])){
         $errors['priorites'] = 'Vous devez rentrer un nombre';
     }
 
-    if(empty($_POST['priorites_e'])){
+    if(!isset($_POST['priorites_e'])){
         $errors['priorites_e'] = 'Vous devez rentrer un nombre';
     }
 
-    if(empty($_POST['conducteur'])){
+    if(!isset($_POST['conducteur'])){
         $errors['conducteur'] = 'Vous devez rentrer un nombre';
     }
 
-    if(empty($_POST['conducteur_e'])){
+    if(!isset($_POST['conducteur_e'])){
         $errors['conducteur_e'] = 'Vous devez rentrer un nombre';
     }
 
@@ -226,6 +226,17 @@ if(!empty($_POST)){
 ?>
 
 <h1>Entrer mes données</h1>
+
+<?php if(!empty($errors)): ?>
+    <div class="alert alert-danger">
+        <p>Vous n'avez pas rempli le formulaire correctement</p>
+        <ul>
+            <?php foreach($errors as $error): ?>
+                <li><?= $error ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>
 
 <form action="" method="post">
     <div class="form-group">

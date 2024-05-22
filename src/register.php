@@ -10,7 +10,7 @@ if(isset($_SESSION['auth'])) {
 if(!empty($_POST)){
     $errors = [];
 
-    if(empty($_POST['pseudo']) || !preg_match('/^[a-zA-Z0-9_]+$/', $_POST['pseudo'])){
+    if(!isset($_POST['pseudo']) || !preg_match('/^[a-zA-Z0-9_]+$/', $_POST['pseudo'])){
         $errors['pseudo'] = "Votre pseudo n'est pas valide (alphanumérique)";
     } else {
         $req = $pdo->prepare('SELECT id FROM users WHERE pseudo = ?');
@@ -22,7 +22,7 @@ if(!empty($_POST)){
         }
     }
 
-    if(empty($_POST['password']) || $_POST['password'] != $_POST['password_confirm']){
+    if(!isset($_POST['password']) || $_POST['password'] != $_POST['password_confirm']){
         $errors['password'] = "Vous devez rentrer un mot de passe valide";
     }
 
