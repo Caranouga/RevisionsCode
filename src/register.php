@@ -31,9 +31,10 @@ if(!empty($_POST)){
         $salt = sha1(uniqid());
         $password = password_hash($_POST['password'] . $salt, PASSWORD_BCRYPT); // On crypte le mot de passe (avec un salt différent pour chaque utilisateur
         $req->execute([$_POST['pseudo'], $password, $salt]);
+        $lastId = $pdo->lastInsertId();
 
         $req = $pdo->prepare('SELECT * FROM users WHERE id = ?');
-        $req->execute([$pdo->lastInsertId()]);
+        $req->execute([$lastId]);
         $user = $req->fetch();
 
         $_SESSION['auth'] = $user;
