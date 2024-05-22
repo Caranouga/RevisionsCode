@@ -144,6 +144,14 @@ $errors = [
 ];
 
 foreach ($datas as $data){
+    $date = new DateTime($data['date'] . ' ' . $data['time']);
+    $now = new DateTime();
+    $interval = $now->diff($date);
+    $env = parse_ini_file(__DIR__ . '/.env');
+    if($interval->d > $env['MAX_DAYS']){
+        continue;
+    }
+
     $errors['signalisation']['donnees'] += $data['signalisation']['erreurs'] / $data['signalisation']['total'];
     $errors['stationnement']['donnees'] += $data['stationnement']['erreurs'] / $data['stationnement']['total'];
     $errors['feux']['donnees'] += $data['feux']['erreurs'] / $data['feux']['total'];
