@@ -30,36 +30,11 @@ if(!isset($_SESSION['auth'])) {
     </thead>
     <tbody>
         <?php
-            // $files = glob(__DIR__ . '/data/*.json');
-
-            // foreach ($files as $file):
-            //     $content = file_get_contents($file);
-            //     $data = json_decode($content, true);
 
             $req = $pdo->prepare('SELECT data_ids FROM users WHERE id = ?');
             $req->execute([$_SESSION['auth']->id]);
             $data_ids = $req->fetch()->data_ids;
             $data_ids = explode(',', $data_ids);
-
-            // foreach ($data_ids as $data_id):
-            //     $req = $pdo->prepare('SELECT * FROM datas WHERE id = ?');
-            //     $req->execute([$data_id]);
-            //     $data = $req->fetch();
-            //     pre($data);
-            //     $datas = [];
-            //     foreach ($data as $key => $value) {
-            //         if($key == "id" || $key == "datetime"){
-            //             $datas[$key] = $value;
-            //         } else {
-            //             $datas[$key] = json_decode($value, true);
-            //         }
-            //     }
-
-            //     $date = $datas['datetime'];
-            //     $date = explode(' ', $date);
-            //     $datas['date'] = $date[0];
-            //     $datas['time'] = $date[1];
-            //     unset($datas['datatime']);
 
             $datas = [];
 
@@ -169,27 +144,6 @@ for($i = 0; $i < 3; $i++){
     echo '<li>' . $errors[$key]['titre'] . ' (' . number_format($errors[$key]['donnees'] / count($datas) * 100, 2, '.', '') . '% d\'erreurs)</li>';
     next($errors);
 }
-// foreach ($files as $file):
-//     $content = file_get_contents($file);
-//     $data = json_decode($content, true);
-
-//     $errors['signalisation']['donnees'] += $data['signalisation']['erreurs'] / $data['signalisation']['total'];
-//     $errors['stationnement']['donnees'] += $data['stationnement']['erreurs'] / $data['stationnement']['total'];
-//     $errors['feux']['donnees'] += $data['feux']['erreurs'] / $data['feux']['total'];
-//     $errors['vehicule']['donnees'] += $data['vehicule']['erreurs'] / $data['vehicule']['total'];
-//     $errors['depassement']['donnees'] += $data['depassement']['erreurs'] / $data['depassement']['total'];
-//     $errors['orientation']['donnees'] += $data['orientation']['erreurs'] / $data['orientation']['total'];
-//     $errors['priorites']['donnees'] += $data['priorites']['erreurs'] / $data['priorites']['total'];
-//     $errors['conducteur']['donnees'] += $data['conducteur']['erreurs'] / $data['conducteur']['total'];
-// endforeach;
-
-// arsort($errors);
-
-// for($i = 0; $i < 3; $i++):
-//     $key = key($errors);
-//     echo '<li>' . $errors[$key]['titre'] . ' (' . number_format($errors[$key]['donnees'] / count($files) * 100, 2, '.', '') . '% d\'erreurs)</li>';
-//     next($errors);
-// endfor;
 ?>
 </ul>
 
@@ -204,12 +158,7 @@ function drawChartTotal($id, $title, $datas){
     foreach ($datas as $data) {
         echo "['" . $data['date'] . ' ' . $data['time'] . "', " . $data[$id]['erreurs'] . ", " . $data[$id]['total'] . "],";
     }
-    // foreach ($files as $file) {
-    //     $content = file_get_contents($file);
-    //     $data = json_decode($content, true);
 
-    //     echo "['" . $data['date'] . ' ' . $data['time'] . "', " . $data[$id]['erreurs'] . "],";
-    // }
     echo ']);';
     echo 'var options = {';
     echo "title: '" . $title . "',";
@@ -237,16 +186,6 @@ function drawChartTotal($id, $title, $datas){
             drawChartTotal('orientation', 'Orientation', $datas);
             drawChartTotal('priorites', 'Priorités', $datas);
             drawChartTotal('conducteur', 'Conducteur', $datas);
-            // $files = glob(__DIR__ . '/data/*.json');
-
-            // drawChart('signalisation', 'Signalisation', $files);
-            // drawChart('stationnement', 'Arrêt/Stationnement', $files);
-            // drawChart('feux', 'Feux/Intempéries', $files);
-            // drawChart('vehicule', 'Véhicule', $files);
-            // drawChart('depassement', 'Dépassement', $files);
-            // drawChart('orientation', 'Orientation', $files);
-            // drawChart('priorites', 'Priorités', $files);
-            // drawChart('conducteur', 'Conducteur', $files);
         ?>
     }
 </script>
@@ -296,16 +235,6 @@ function drawChartPercentage($id, $title, $datas){
             drawChartPercentage('orientation', 'Orientation', $datas);
             drawChartPercentage('priorites', 'Priorités', $datas);
             drawChartPercentage('conducteur', 'Conducteur', $datas);
-            // $files = glob(__DIR__ . '/data/*.json');
-
-            // drawChart('signalisation', 'Signalisation', $files);
-            // drawChart('stationnement', 'Arrêt/Stationnement', $files);
-            // drawChart('feux', 'Feux/Intempéries', $files);
-            // drawChart('vehicule', 'Véhicule', $files);
-            // drawChart('depassement', 'Dépassement', $files);
-            // drawChart('orientation', 'Orientation', $files);
-            // drawChart('priorites', 'Priorités', $files);
-            // drawChart('conducteur', 'Conducteur', $files);
         ?>
     }
 </script>

@@ -179,48 +179,6 @@ if(!empty($_POST)){
             exit();
         }
     }
-
-
-    // $filename = __DIR__ . '/data/' . time() . '.json';
-
-    // $data = [
-    //     'date' => $_POST['date'],
-    //     'time' => $_POST['time'],
-    //     'signalisation' => [
-    //         'total' => $_POST['signalisation'],
-    //         'erreurs' => $_POST['signalisation_e']
-    //     ],
-    //     'stationnement' => [
-    //         'total' => $_POST['stationnement'],
-    //         'erreurs' => $_POST['stationnement_e']
-    //     ],
-    //     'feux' => [
-    //         'total' => $_POST['feux'],
-    //         'erreurs' => $_POST['feux_e']
-    //     ],
-    //     'vehicule' => [
-    //         'total' => $_POST['vehicule'],
-    //         'erreurs' => $_POST['vehicule_e']
-    //     ],
-    //     'depassement' => [
-    //         'total' => $_POST['depassement'],
-    //         'erreurs' => $_POST['depassement_e']
-    //     ],
-    //     'orientation' => [
-    //         'total' => $_POST['orientation'],
-    //         'erreurs' => $_POST['orientation_e']
-    //     ],
-    //     'priorites' => [
-    //         'total' => $_POST['priorites'],
-    //         'erreurs' => $_POST['priorites_e']
-    //     ],
-    //     'conducteur' => [
-    //         'total' => $_POST['conducteur'],
-    //         'erreurs' => $_POST['conducteur_e']
-    //     ]
-    // ];
-
-    // file_put_contents($filename, json_encode($data));
 }
 
 ?>
