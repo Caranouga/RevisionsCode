@@ -26,6 +26,7 @@ if(!isset($_SESSION['auth'])) {
             <th>Orientation</th>
             <th>Priorités</th>
             <th>Conducteur</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -73,6 +74,7 @@ if(!isset($_SESSION['auth'])) {
             <td><?= $data['orientation']['total'] ?>/<?= $data['orientation']['erreurs'] ?> (<?= number_format(($data['orientation']['total'] - $data['orientation']['erreurs']) / $data['orientation']['total'] * 100, 2, '.', '') ?>%)</td>
             <td><?= $data['priorites']['total'] ?>/<?= $data['priorites']['erreurs'] ?> (<?= number_format(($data['priorites']['total'] - $data['priorites']['erreurs']) / $data['priorites']['total'] * 100, 2, '.', '') ?>%)</td>
             <td><?= $data['conducteur']['total'] ?>/<?= $data['conducteur']['erreurs'] ?> (<?= number_format(($data['conducteur']['total'] - $data['conducteur']['erreurs']) / $data['conducteur']['total'] * 100, 2, '.', '') ?>%)</td>
+            <td><a href="delete.php?id=<?= $data['id'] ?>" class="btn btn-danger">Supprimer</a></td>
         </tr>
         <?php endforeach; ?>
     </tbody>
