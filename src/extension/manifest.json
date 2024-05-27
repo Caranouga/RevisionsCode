@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "RévisionsCode - Extension",
+    "description": "Extension pour RévisionsCode",
+    "version": "1.0",
+    "permissions": [
+        "activeTab",
+        "storage",
+        "scripting"
+    ],
+    "action": {
+        "default_popup": "main.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ]
+}
+  

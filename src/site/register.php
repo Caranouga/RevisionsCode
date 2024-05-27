@@ -27,10 +27,11 @@ if(!empty($_POST)){
     }
 
     if(empty($errors)){
-        $req = $pdo->prepare('INSERT INTO users SET pseudo = ?, password = ?, salt = ?');
+        $req = $pdo->prepare('INSERT INTO users SET pseudo = ?, password = ?, salt = ?, api_key = ?');
         $salt = sha1(uniqid());
         $password = password_hash($_POST['password'] . $salt, PASSWORD_BCRYPT); // On crypte le mot de passe (avec un salt différent pour chaque utilisateur
-        $req->execute([$_POST['pseudo'], $password, $salt]);
+        $api_key = sha1(uniqid());
+        $req->execute([$_POST['pseudo'], $password, $salt, $api_key]);
         $lastId = $pdo->lastInsertId();
 
         $req = $pdo->prepare('SELECT * FROM users WHERE id = ?');

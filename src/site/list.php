@@ -13,6 +13,8 @@ if(!isset($_SESSION['auth'])) {
 
 <h1>Mes données</h1>
 
+<p>Ma clé d'API : <?= $_SESSION['auth']->api_key ?></p>
+
 <table class="table table-striped table-hover ">
     <thead>
         <tr>
@@ -35,6 +37,7 @@ if(!isset($_SESSION['auth'])) {
             $req = $pdo->prepare('SELECT data_ids FROM users WHERE id = ?');
             $req->execute([$_SESSION['auth']->id]);
             $data_ids = $req->fetch()->data_ids;
+            if($data_ids == null) exit();
             $data_ids = explode(',', $data_ids);
 
             $datas = [];
