@@ -15,6 +15,12 @@ Un site pour réviser le code de la route
 
 ## Installation
 
+<!-- Warning (red) -->
+<details>
+<summary>ATTENTION<summary>
+<p>Ancienne version de l'instruction d'installation</p>
+</details>
+
 ### Etape par étape
 ```bash
 git clone https://github.com/caranouga/RevisionsCode.git
