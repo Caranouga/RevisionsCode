@@ -123,15 +123,11 @@ $errors = [
     ]
 ];
 
-foreach ($datas as $data){
-    $date = new DateTime($data['date'] . ' ' . $data['time']);
-    $now = new DateTime();
-    $interval = $now->diff($date);
-    $env = parse_ini_file(__DIR__ . '/.env');
-    if($interval->d > $env['MAX_DAYS']){
-        continue;
-    }
+// get the 5 last datas
+$env = parse_ini_file(__DIR__ . '/.env');
 
+$calcData = array_slice($datas, -$env['CALC_NB']);
+foreach ($calcData as $data){
     $errors['signalisation']['donnees'] += $data['signalisation']['erreurs'] / $data['signalisation']['total'];
     $errors['stationnement']['donnees'] += $data['stationnement']['erreurs'] / $data['stationnement']['total'];
     $errors['feux']['donnees'] += $data['feux']['erreurs'] / $data['feux']['total'];
